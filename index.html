@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>etch-a-sketch</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-buttons">
+        <div class="choose-color">
+            
+          <input type="color" id="head" name="head"
+                value="#e66465">
+        </div>
+        <div class="rainbow">
+          <button>Random</button>
+        </div>
+        
+        <div class="shading">
+          <button>shade</button>
+        </div>
+        <div class="grids">
+          <p>grid-size:</pv>
+          <input type="range" id="vol" name="vol" min="0" max="50">
+        </div>
+      </div>    
+      <div class="sketch-area">
+        
+      </div>
+      <div class="right-button">
+        <div class="eraser">
+          <button>eraser</button>
+        </div>
+        <div class="clear">
+          <button>clear</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
