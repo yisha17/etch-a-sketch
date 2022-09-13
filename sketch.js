@@ -16,7 +16,6 @@ function drawGrid(){
     sketchArea.appendChild(gridItem);
  }
  let gridItem = document.querySelector('.grid-item');
- gridItem.style.border = '1px solid grey';
  sketchArea.setAttribute('style', `display:grid;grid-template-columns:repeat(${numberOfGrid},1fr);grid-template-rows:repeat(${numberOfGrid}, 1fr); `)
  sketchArea.style['grid-template-columns']= `repeat(${numberOfGrid}), 1fr`;
  sketchArea.style['grid-template-rows']= `repeat(${numberOfGrid}), 1fr`;
