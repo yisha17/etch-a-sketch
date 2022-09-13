@@ -17,9 +17,6 @@ function drawGrid() {
       let gridItem = document.createElement("div");
       gridItem.classList.add("grid-item");
       sketchArea.appendChild(gridItem);
-      let gridItems = document.querySelectorAll('.grid-item');
-      let count = gridItems.length;
-      console.log(count);
     }
 
   }
@@ -29,4 +26,27 @@ function drawGrid() {
   );
   sketchArea.style["grid-template-columns"] = `repeat(${numberOfGrid}), 1fr`;
   sketchArea.style["grid-template-rows"] = `repeat(${numberOfGrid}), 1fr`;
+  sketch();
 }
+
+drawGrid();
+
+function chooseColor(grid){
+  let colorInput = document.querySelector('#color');
+  let colorChoice = colorInput.value;
+  return colorChoice;
+}
+
+
+function sketch(){
+  let gridItem = document.querySelectorAll('.grid-item');
+  gridItem.forEach((grid) => {
+    grid.addEventListener('mouseover', function(e)  {
+      e.target.setAttribute('style',`background-color: ${chooseColor()}`)
+    });
+  })
+}
+
+
+
+
