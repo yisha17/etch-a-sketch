@@ -26,7 +26,7 @@ function drawGrid() {
   );
   sketchArea.style["grid-template-columns"] = `repeat(${numberOfGrid}), 1fr`;
   sketchArea.style["grid-template-rows"] = `repeat(${numberOfGrid}), 1fr`;
-  sketch();
+  randomColor();
 }
 
 drawGrid();
@@ -44,6 +44,20 @@ function sketch(){
     grid.addEventListener('mouseover', function(e)  {
       e.target.setAttribute('style',`background-color: ${chooseColor()}`)
     });
+  })
+}
+
+function randomizecolor(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function randomColor(){
+  let gridItem = document.querySelectorAll('.grid-item');
+
+  gridItem.forEach((grid) => {
+    grid.addEventListener('mouseover', function(e){
+      e.target.setAttribute('style', `background-color: rgb(${randomizecolor(0,255).toString()},${randomizecolor(0,255).toString()},${randomizecolor(0,255).toString()})`)
+    })
   })
 }
 
