@@ -18,7 +18,6 @@ function drawGrid() {
       gridItem.classList.add("grid-item");
       sketchArea.appendChild(gridItem);
     }
-
   }
   sketchArea.setAttribute(
     "style",
@@ -26,7 +25,7 @@ function drawGrid() {
   );
   sketchArea.style["grid-template-columns"] = `repeat(${numberOfGrid}), 1fr`;
   sketchArea.style["grid-template-rows"] = `repeat(${numberOfGrid}), 1fr`;
-  randomColor();
+  shading();
 }
 
 drawGrid();
@@ -38,7 +37,7 @@ function chooseColor(grid){
 }
 
 
-function sketch(){
+function oneColor(){
   let gridItem = document.querySelectorAll('.grid-item');
   gridItem.forEach((grid) => {
     grid.addEventListener('mouseover', function(e)  {
@@ -59,6 +58,31 @@ function randomColor(){
       e.target.setAttribute('style', `background-color: rgb(${randomizecolor(0,255).toString()},${randomizecolor(0,255).toString()},${randomizecolor(0,255).toString()})`)
     })
   })
+}
+
+
+
+function shading(){
+  let gridItem = document.querySelectorAll('.grid-item');
+  gridItem.forEach((grid) => {
+    grid.setAttribute('style', 'background-color: rgb(215,255,255)');
+    grid.addEventListener('mouseover', darken )
+  })
+}
+
+function darken(e) {
+  let oldColor = e.target.style.backgroundColor;
+   let singleColor = oldColor.slice(4,9)
+   let currentColor = parseInt(singleColor) - 15;
+
+   if(currentColor <= 0) return;
+   else{
+    let colorString = currentColor.toString();
+    return e.target.style.backgroundColor = `rgb(${colorString},${colorString},${colorString})`
+   }
+   
+   
+  
 }
 
 
