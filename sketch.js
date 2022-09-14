@@ -80,9 +80,6 @@ function darken(e) {
     let colorString = currentColor.toString();
     return e.target.style.backgroundColor = `rgb(${colorString},${colorString},${colorString})`
    }
-   
-   
-  
 }
 
 
