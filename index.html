@@ -4,45 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>etch-a-sketch</title>
   </head>
   <body>
-
-
-    <div class="container">
-      <div class="left-buttons">
-        <div class="choose-color">
-            
-          <input type="color" id="color" name="head"
-                value="#e66465">
-        </div>
-        <div class="single-color">
-          <button id = "single-color">Color</button>
-        </div>
-         <div class="rainbow">
-          <button id = "rainbow">Rainbow</button>
-        </div>
-        
-        <div class="shading">
-          <button id = "shading">shade</button>
-        </div>
-        <div class="grids">
-          <input type="range" id="grid-size" name="grid-size" min="3" max="40" value="3" oninput="drawGrid()">
+    <div class="main">
+      <div class="title">Etch A Sketch</div>
+      <div class="container">
+        <div class="left-buttons">
+          <div class="choose-color">
+            <input type="color" id="color" name="head" value="#e66465" />
+          </div>
+          <div class="single-color">
+            <button id="single-color">Color</button>
+          </div>
+          <div class="rainbow">
+            <button id="rainbow">Rainbow</button>
+          </div>
+  
+          <div class="shading">
+            <button id="shading">shade</button>
+          </div>
+          <div class="grids">
+            <input
+              type="range"
+              id="grid-size"
+              name="grid-size"
+              min="3"
+              max="40"
+              value="10"
+              oninput="drawGrid()"
+            />
             <p class="show-grid">grid-size:</p>
+          </div>
+          <div class="eraser">
+            <button id="eraser">eraser</button>
+          </div>
+          <div class="clear">
+            <button id="clear" onclick="clearGrid()">clear</button>
+          </div>
         </div>
-        <div class="eraser">
-          <button id="eraser">eraser</button>
-        </div>
-        <div class="clear">
-          <button id="clear" onclick="clearGrid()">clear</button>
-        </div>
-      </div>    
-      <div class="sketch-area">
-        
+        <div class="sketch-area"></div>
       </div>
-      
     </div>
+    
 
     <script src="sketch.js"></script>
   </body>

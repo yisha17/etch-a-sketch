@@ -1,46 +1,53 @@
 const sketchArea = document.querySelector(".sketch-area");
 const gridNumber = document.querySelector("#grid-size");
-const showGrid = document.querySelector('.show-grid');
-var task = 'oneColor';
-const btnRandom = document.querySelector('#rainbow');
+const showGrid = document.querySelector(".show-grid");
+var task = "oneColor";
+const btnRandom = document.querySelector("#rainbow");
 const btnEraser = document.querySelector("#eraser");
-const btnShading = document.querySelector('#shading')
-const btnOneColor = document.querySelector("#single-color");
+const btnShading = document.querySelector("#shading");
+const btnSingleColor = document.querySelector("#single-color");
+const btnClear = document.querySelector('#clear')
 
 
-btnRandom.addEventListener('click', changeTask);
-btnEraser.addEventListener("click", changeTask);
-btnShading.addEventListener("click", changeTask);
-btnOneColor.addEventListener("click", changeTask);
+function focusbutton(e){
+  let buttons = [btnRandom,btnEraser,btnShading,btnSingleColor,btnClear];
+  buttons.forEach(button => {
+    if(e.target != button){
+      button.style.backgroundColor = 'rgb(95, 89, 6)';
+    }else{
+      button.style.backgroundColor = 'blue';
+    }
+  })
+}
 
-
-
-
-
-function changeTask(e){
-  switch (e.target.id){
-  
-    case 'rainbow':
-      task = 'random';
+function changeTask(e) {
+  switch (e.target.id) {
+    case "rainbow":
+      task = "random";
       console.log(e.target.id);
-      console.log(task)
+      console.log(e.target);
+      focusbutton(e);
       listen();
       break;
-    
-      case 'eraser':
-        task = 'erase';
-        listen();
-        btnEraser.style.backgroundColor = 'blue';
-        break;
-     
-        case 'single-color':
-        task = 'oneColor';
-        listen();
-        break;
 
-        case 'shading':
-          task = 'shading';
-          listen();
+    case "eraser":
+      task = "erase";
+      focusbutton(e);
+      listen();
+      btnEraser.style.backgroundColor = "blue";
+      break;
+
+    case "single-color":
+      task = "oneColor";
+      focusbutton(e);
+      listen();
+      break;
+
+    case "shading":
+      task = "shading";
+      focusbutton(e);
+      console.log(e.target.id)
+      listen();
   }
 }
 
@@ -51,28 +58,6 @@ function removeAllChildNodes(parent) {
 }
 
 
-function listen(){
-  switch(task){
-    case 'oneColor':{
-      oneColor();
-      break;
-    }
-    case 'random':{
-      randomColor();
-       break;
-    }
-
-    case 'shading':{
-      shading();
-       break;
-    }
-    case 'erase':{
-      eraser();
-       break;
-    }
-    
-  }
-}
 
 function drawGrid() {
   removeAllChildNodes(sketchArea);
@@ -92,10 +77,7 @@ function drawGrid() {
   sketchArea.style["grid-template-rows"] = `repeat(${numberOfGrid}), 1fr`;
 
   showGrid.textContent = `Grid Size: ${numberOfGrid} x ${numberOfGrid}  `;
-  
 }
-
-drawGrid();
 
 function chooseColor(grid) {
   let colorInput = document.querySelector("#color");
@@ -103,38 +85,38 @@ function chooseColor(grid) {
   return colorChoice;
 }
 
-
-  function oneColor() {
-    let gridItem = document.querySelectorAll(".grid-item");
-    gridItem.forEach((grid) => {
-      grid.addEventListener("mouseover", function (e) {
-        e.target.setAttribute("style", `background-color: ${chooseColor()}`);
-      });
+function oneColor() {
+  let gridItem = document.querySelectorAll(".grid-item");
+  gridItem.forEach((grid) => {
+    grid.addEventListener("mouseover", function (e) {
+      e.target.setAttribute("style", `background-color: ${chooseColor()}`);
     });
-  }
+  });
+}
 
-  function randomizecolor(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+function randomizecolor(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-  function randomColor() {
-    let gridItem = document.querySelectorAll(".grid-item");
+function randomColor() {
+  let gridItem = document.querySelectorAll(".grid-item");
 
-    gridItem.forEach((grid) => {
-      grid.addEventListener("mouseover", function (e) {
-        e.target.setAttribute(
-          "style",
-          `background-color: rgb(${randomizecolor(
-            0,
-            255
-          ).toString()},${randomizecolor(0, 255).toString()},${randomizecolor(
-            0,
-            255
-          ).toString()})`
-        );
-      });
+  gridItem.forEach((grid) => {
+    grid.addEventListener("mouseover", function (e) {
+      e.target.setAttribute(
+        "style",
+        `background-color: rgb(${randomizecolor(
+          0,
+          255
+        ).toString()},${randomizecolor(0, 255).toString()},${randomizecolor(
+          0,
+          255
+        ).toString()})`
+      );
     });
-  }
+  });
+}
+
 function shading() {
   let gridItem = document.querySelectorAll(".grid-item");
   gridItem.forEach((grid) => {
@@ -142,18 +124,18 @@ function shading() {
     grid.addEventListener("mouseover", darken);
   });
 }
-  function darken(e) {
-    let oldColor = e.target.style.backgroundColor;
-    let singleColor = oldColor.slice(4, 9);
-    let currentColor = parseInt(singleColor) - 15;
-
-    if (currentColor <= 0) return;
-    else {
-      let colorString = currentColor.toString();
-      return (e.target.style.backgroundColor = `rgb(${colorString},${colorString},${colorString})`);
-    }
+function darken(e) {
+  
+  let oldColor = e.target.style.backgroundColor;
+  let singleColor = oldColor.slice(4, 9);
+  let currentColor = parseInt(singleColor) - 15;
+console.log('printing')
+  if (currentColor <= 0) return;
+  else {
+    let colorString = currentColor.toString();
+    return (e.target.style.backgroundColor = `rgb(${colorString},${colorString},${colorString})`);
   }
-
+}
 
 function clearGrid() {
   let gridItem = document.querySelectorAll(".grid-item");
@@ -163,13 +145,41 @@ function clearGrid() {
   });
 }
 
-function eraser(){
+function eraser() {
   let gridItem = document.querySelectorAll(".grid-item");
   gridItem.forEach((grid) => {
-    grid.addEventListener('mouseover', function(e){
-      e.target.style.backgroundColor = 'rgb(255,255,255)';
-    })
-  })
+    grid.addEventListener("mouseover", function (e) {
+      e.target.style.backgroundColor = "rgb(255,255,255)";
+    });
+  });
 }
 
 
+function listen() {
+  switch (task) {
+    case "oneColor": {
+      oneColor();
+      break;
+    }
+    case "random": {
+      randomColor();
+      break;
+    }
+
+    case "shading": {
+      shading();
+      break;
+    }
+    case "erase": {
+      eraser();
+      break;
+    }
+  }
+}
+
+btnRandom.addEventListener("click", changeTask);
+btnEraser.addEventListener("click", changeTask);
+btnShading.addEventListener("click", changeTask);
+btnSingleColor.addEventListener("click", changeTask);
+
+drawGrid();

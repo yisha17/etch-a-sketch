@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
 
 body{
     margin: 20px 50px;
@@ -7,12 +7,24 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Paytone One', sans-serif;
 
+}
+.title{
+    font-size: 30px;
+    text-align: center;
+    margin: 20px;
+    color: white;
+}
+.main{
+    background-color: rgb(146, 155, 69);
+    margin: 0;
+    padding: 0;
 }
 .container {
     min-height: 90vh;
-    width: 80%;
-    background-color: rgb(146, 155, 69);
+    width: 100%;
+    
     display: flex;
     justify-content: space-around                 ;
 }
@@ -44,6 +56,7 @@ body{
     overflow: hidden;
     border-radius: 50%;
     margin-top: 30px;
+    align-self: center;
 }
 input[type="color"] {
 	-webkit-appearance: none;
@@ -61,27 +74,22 @@ input[type="color"]::-webkit-color-swatch {
     border-radius: 50%;
 }
 
-#random, #rainbow,#shading,#eraser,#clear{
-    height: 40px;
-    width: 90px;
-    border-radius: 10px;
-    border: 1px solid yellow ;
-    font-size: 20px;
-    background-color: rgb(95, 89, 6);
-    color: white;
-    margin-top: 20px;
+
+.checked{
+    background-color: blue;
 }
 
-
-#single-color, #rainbow,#shading,#eraser,#clear :focus{
+#single-color, #rainbow,#shading,#eraser,#clear
+{
     height: 40px;
-    width: 90px;
+    width: 120px;
     border-radius: 10px;
     border: 1px solid yellow ;
     font-size: 20px;
     background-color: rgb(95, 89, 6);
     color: white;
     margin-top: 20px;
+    font-family: 'Paytone One', sans-serif;
 }
 
 
