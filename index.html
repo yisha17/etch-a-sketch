@@ -8,6 +8,8 @@
     <title>etch-a-sketch</title>
   </head>
   <body>
+
+
     <div class="container">
       <div class="left-buttons">
         <div class="choose-color">
@@ -16,23 +18,23 @@
                 value="#e66465">
         </div>
         <div class="rainbow">
-          <button>Random</button>
+          <button id = "random">Random</button>
         </div>
         
         <div class="shading">
-          <button>shade</button>
+          <button id = "shading">shade</button>
         </div>
         <div class="grids">
           <p>grid-size:</pv>
 
           <input type="range" id="grid-size" name="grid-size" min="3" max="40" value="3" oninput="drawGrid()">
-
+            
         </div>
         <div class="eraser">
           <button>eraser</button>
         </div>
         <div class="clear">
-          <button>clear</button>
+          <button onclick="clearGrid()">clear</button>
         </div>
       </div>    
       <div class="sketch-area">
