@@ -48,6 +48,7 @@ function changeTask(e) {
       focusbutton(e);
       console.log(e.target.id)
       listen();
+      break;
   }
 }
 
@@ -79,7 +80,7 @@ function drawGrid() {
   showGrid.textContent = `Grid Size: ${numberOfGrid} x ${numberOfGrid}  `;
 }
 
-function chooseColor(grid) {
+function chooseColor() {
   let colorInput = document.querySelector("#color");
   let colorChoice = colorInput.value;
   return colorChoice;
@@ -120,16 +121,26 @@ function randomColor() {
 function shading() {
   let gridItem = document.querySelectorAll(".grid-item");
   gridItem.forEach((grid) => {
-    grid.setAttribute("style", "background-color: rgb(255,255,255)");
     grid.addEventListener("mouseover", darken);
   });
 }
 function darken(e) {
   
   let oldColor = e.target.style.backgroundColor;
-  let singleColor = oldColor.slice(4, 9);
-  let currentColor = parseInt(singleColor) - 15;
-console.log('printing')
+  let singleColor;
+  let currentColor;
+  console.log(oldColor)
+  if (oldColor == NaN || oldColor == ''){
+    oldColor = 'rgb(255,255,255)';
+    singleColor = oldColor.slice(4, 9);
+    currentColor = parseInt(singleColor) - 15;
+  }else{
+    singleColor = oldColor.slice(4, 9);
+    currentColor = parseInt(singleColor) - 15;
+  }
+  
+
+
   if (currentColor <= 0) return;
   else {
     let colorString = currentColor.toString();
