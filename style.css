@@ -73,7 +73,7 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 
-#random, #rainbow,#shading,#eraser,#clear :focus{
+#single-color, #rainbow,#shading,#eraser,#clear :focus{
     height: 40px;
     width: 90px;
     border-radius: 10px;

@@ -4,8 +4,8 @@ const showGrid = document.querySelector('.show-grid');
 var task = 'oneColor';
 const btnRandom = document.querySelector('#rainbow');
 const btnEraser = document.querySelector("#eraser");
-const btnShading = document.querySelector('#rainbow')
-const btnOneColor = document.querySelector("#random");
+const btnShading = document.querySelector('#shading')
+const btnOneColor = document.querySelector("#single-color");
 
 
 btnRandom.addEventListener('click', changeTask);
@@ -24,28 +24,53 @@ function changeTask(e){
       task = 'random';
       console.log(e.target.id);
       console.log(task)
-      drawGrid();
+      listen();
       break;
     
       case 'eraser':
         task = 'erase';
-        drawGrid();
+        listen();
+        btnEraser.style.backgroundColor = 'blue';
         break;
      
-        case 'random':
+        case 'single-color':
         task = 'oneColor';
-        drawGrid();
+        listen();
         break;
 
         case 'shading':
           task = 'shading';
-          drawGrid();
+          listen();
   }
 }
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
+  }
+}
+
+
+function listen(){
+  switch(task){
+    case 'oneColor':{
+      oneColor();
+      break;
+    }
+    case 'random':{
+      randomColor();
+       break;
+    }
+
+    case 'shading':{
+      shading();
+       break;
+    }
+    case 'erase':{
+      eraser();
+       break;
+    }
+    
   }
 }
 
@@ -67,26 +92,7 @@ function drawGrid() {
   sketchArea.style["grid-template-rows"] = `repeat(${numberOfGrid}), 1fr`;
 
   showGrid.textContent = `Grid Size: ${numberOfGrid} x ${numberOfGrid}  `;
-  switch(task){
-    case 'oneColor':{
-      oneColor();
-      break;
-    }
-    case 'random':{
-      randomColor();
-       break;
-    }
-
-    case 'shading':{
-      shading();
-       break;
-    }
-    case 'erase':{
-      eraser();
-       break;
-    }
-    
-  }
+  
 }
 
 drawGrid();
@@ -132,7 +138,7 @@ function chooseColor(grid) {
 function shading() {
   let gridItem = document.querySelectorAll(".grid-item");
   gridItem.forEach((grid) => {
-    grid.setAttribute("style", "background-color: rgb(215,255,255)");
+    grid.setAttribute("style", "background-color: rgb(255,255,255)");
     grid.addEventListener("mouseover", darken);
   });
 }
