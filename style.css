@@ -73,6 +73,18 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 
+#random, #rainbow,#shading,#eraser,#clear :focus{
+    height: 40px;
+    width: 90px;
+    border-radius: 10px;
+    border: 1px solid yellow ;
+    font-size: 20px;
+    background-color: rgb(95, 89, 6);
+    color: white;
+    margin-top: 20px;
+}
+
+
 #grid-size{
     display: block;
     margin-top:20px;

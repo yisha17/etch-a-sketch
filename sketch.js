@@ -1,6 +1,47 @@
 const sketchArea = document.querySelector(".sketch-area");
 const gridNumber = document.querySelector("#grid-size");
 const showGrid = document.querySelector('.show-grid');
+var task = 'oneColor';
+const btnRandom = document.querySelector('#rainbow');
+const btnEraser = document.querySelector("#eraser");
+const btnShading = document.querySelector('#rainbow')
+const btnOneColor = document.querySelector("#random");
+
+
+btnRandom.addEventListener('click', changeTask);
+btnEraser.addEventListener("click", changeTask);
+btnShading.addEventListener("click", changeTask);
+btnOneColor.addEventListener("click", changeTask);
+
+
+
+
+
+function changeTask(e){
+  switch (e.target.id){
+  
+    case 'rainbow':
+      task = 'random';
+      console.log(e.target.id);
+      console.log(task)
+      drawGrid();
+      break;
+    
+      case 'eraser':
+        task = 'erase';
+        drawGrid();
+        break;
+     
+        case 'random':
+        task = 'oneColor';
+        drawGrid();
+        break;
+
+        case 'shading':
+          task = 'shading';
+          drawGrid();
+  }
+}
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -26,7 +67,26 @@ function drawGrid() {
   sketchArea.style["grid-template-rows"] = `repeat(${numberOfGrid}), 1fr`;
 
   showGrid.textContent = `Grid Size: ${numberOfGrid} x ${numberOfGrid}  `;
-  oneColor();
+  switch(task){
+    case 'oneColor':{
+      oneColor();
+      break;
+    }
+    case 'random':{
+      randomColor();
+       break;
+    }
+
+    case 'shading':{
+      shading();
+       break;
+    }
+    case 'erase':{
+      eraser();
+       break;
+    }
+    
+  }
 }
 
 drawGrid();
