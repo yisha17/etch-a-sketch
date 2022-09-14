@@ -21,6 +21,7 @@ body{
     display: flex;
     justify-content: flex-start;
     flex-flow: column;
+    margin-left: 20px;
 }
 
 
@@ -42,6 +43,7 @@ body{
     height: 80px;
     overflow: hidden;
     border-radius: 50%;
+    margin-top: 30px;
 }
 input[type="color"] {
 	-webkit-appearance: none;
@@ -58,3 +60,25 @@ input[type="color"]::-webkit-color-swatch {
 	border: none;
     border-radius: 50%;
 }
+
+#random, #rainbow,#shading,#eraser,#clear{
+    height: 40px;
+    width: 90px;
+    border-radius: 10px;
+    border: 1px solid yellow ;
+    font-size: 20px;
+    background-color: rgb(95, 89, 6);
+    color: white;
+    margin-top: 20px;
+}
+
+
+#grid-size{
+    display: block;
+    margin-top:20px;
+}
+.show-grid{
+    margin: 10px 0;
+    color: white;
+}
+

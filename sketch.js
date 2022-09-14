@@ -1,6 +1,6 @@
 const sketchArea = document.querySelector(".sketch-area");
 const gridNumber = document.querySelector("#grid-size");
-
+const showGrid = document.querySelector('.show-grid');
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -24,6 +24,8 @@ function drawGrid() {
   );
   sketchArea.style["grid-template-columns"] = `repeat(${numberOfGrid}), 1fr`;
   sketchArea.style["grid-template-rows"] = `repeat(${numberOfGrid}), 1fr`;
+
+  showGrid.textContent = `Grid Size: ${numberOfGrid} x ${numberOfGrid}  `;
   oneColor();
 }
 
